@@ -7,6 +7,7 @@ import { BiDish } from "react-icons/bi";
 import { CiChat1 } from "react-icons/ci";
 import { IoHomeOutline } from "react-icons/io5";
 import { IoIosExit } from "react-icons/io";
+import { FaClipboardList } from "react-icons/fa";
 
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
@@ -58,12 +59,14 @@ function Sidebar_Navigation() {
             <Sidebar.Item href="/Platillos" icon={BiDish}>
               Platillos
             </Sidebar.Item>
+            <Sidebar.Item href="/Categorias" icon={FaClipboardList}>
+              Categorias Platillos
+            </Sidebar.Item>
             <Sidebar.Item href="/Chat" icon={CiChat1}>
               Chat
             </Sidebar.Item>
           </Sidebar.ItemGroup>
           <Sidebar.ItemGroup>
-            {/* Cambié el onClick a una función anónima para que no se ejecute inmediatamente */}
             <Sidebar.Item href="" onClick={() => logout()} icon={IoIosExit}>
               Logout
             </Sidebar.Item>

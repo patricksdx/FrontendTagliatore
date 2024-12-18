@@ -9,6 +9,7 @@ import Meseros from "./pages/Meseros";
 import Clientes from "./pages/Clientes";
 import Platillos from "./pages/Platillos";
 import Chat from "./pages/Chat";
+import CategoriaPlatillos from "./pages/CategoriaPlatillos";
 
 import SidebarNavigation from "./components/sidebar_navegation";
 import { useEffect } from "react";
@@ -47,6 +48,7 @@ function Layout() {
                     <Route path="/Clientes" element={<ProtectedRoute element={<Clientes />} />} />
                     <Route path="/Platillos" element={<ProtectedRoute element={<Platillos />} />} />
                     <Route path="/Chat" element={<ProtectedRoute element={<Chat />} />} />
+                    <Route path="/Categorias" element={<ProtectedRoute element={<CategoriaPlatillos />} />} />
                 </Routes>
             </div>
         </div>
