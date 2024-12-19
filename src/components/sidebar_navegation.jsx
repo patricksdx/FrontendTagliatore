@@ -63,7 +63,10 @@ function Sidebar_Navigation() {
               Categorias Platillos
             </Sidebar.Item>
             <Sidebar.Item href="/ChatAdmin" icon={CiChat1}>
-              Chat
+              Chat del Admin
+            </Sidebar.Item>
+            <Sidebar.Item href="/ChatCliente" icon={CiChat1}>
+              Chat del Cliente
             </Sidebar.Item>
           </Sidebar.ItemGroup>
           <Sidebar.ItemGroup>

@@ -36,18 +36,18 @@ export function AuthProvider({ children }) {
 
     const login = async (loginData) => {
         try {
-            const res = await loginRequest(loginData); // Llamamos a loginRequest
-            const token = res.data.token; // Suponiendo que el token viene en la respuesta
+            const res = await loginRequest(loginData); // Llamada a la API de login
+            const token = res.data.token; // Token recibido
+            const user = res.data.user; // Usuario con su rol
             localStorage.setItem('token', token); // Guardamos el token en localStorage
             setIsAuthenticated(true); // Marcamos al usuario como autenticado
-            // Opcional: podrías establecer el usuario aquí también si viene en la respuesta
-            setUser(res.data.user); // Suponiendo que la API devuelve un usuario en res.data.user
+            setUser(user); // Guardamos el usuario en el estado, que incluye el rol
             return res;
         } catch (error) {
             console.error("Error during login:", error);
             throw new Error('Login failed');
         }
-    };
+    };    
 
     // Función para cerrar sesión
     const logout = () => {
