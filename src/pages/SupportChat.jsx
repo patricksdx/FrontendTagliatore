@@ -4,42 +4,42 @@ import io from 'socket.io-client';
 // Conectar con el servidor
 const socket = io('http://localhost:3000/chat');
 
-const ChatCliente = () => {
+const ChatAdmin = () => {
   const [mensaje, setMensaje] = useState('');
   const [mensajes, setMensajes] = useState([]);
 
   useEffect(() => {
     // Verificar si la conexión se establece correctamente
     socket.on('connect', () => {
-      console.log('Cliente conectado con el id:', socket.id);
-      socket.emit('identificarRol', 'Cliente');  // Identificar como Cliente
+      console.log('Administrador conectado con el id:', socket.id);
+      socket.emit('identificarRol', 'Admin');  // Identificar como Admin
     });
 
-    // Escuchar los mensajes del admin
-    socket.on('mensajeAdmin', (data) => {
-      if (data.from === 'Admin') {
-        console.log('Mensaje recibido del admin:', data);
+    // Escuchar los mensajes del cliente
+    socket.on('mensajeCliente', (data) => {
+      if (data.from === 'Cliente') {
+        console.log('Mensaje recibido del cliente:', data);
         setMensajes((prevMensajes) => [
           ...prevMensajes,
-          { msg: data.msg, from: 'Admin' }, // Mostrar solo mensajes de admin
+          { msg: data.msg, from: 'Cliente' }, // Mostrar solo mensajes del cliente
         ]);
       }
     });
 
     // Limpiar eventos al desconectar
     return () => {
-      socket.off('mensajeAdmin');
+      socket.off('mensajeCliente');
     };
   }, []);
 
   const handleSendMessage = () => {
     if (mensaje.trim()) {
-      // Enviar mensaje al servidor como 'Cliente'
+      // Enviar mensaje al servidor como 'Admin'
       console.log('Enviando mensaje al servidor:', mensaje);
-      socket.emit('mensajeCliente', { msg: mensaje, from: 'Cliente' });
+      socket.emit('mensajeAdmin', { msg: mensaje, from: 'Admin' });
       setMensajes((prevMensajes) => [
         ...prevMensajes,
-        { msg: mensaje, from: 'Cliente' }, // Mostrar mensaje del cliente
+        { msg: mensaje, from: 'Admin' }, // Mostrar mensaje del admin
       ]);
       setMensaje('');
     }
@@ -47,7 +47,7 @@ const ChatCliente = () => {
 
   return (
     <div>
-      <h2>Chat con el Administrador</h2>
+      <h2>Chat con el Cliente</h2>
       <div
         style={{
           height: '300px',
@@ -60,15 +60,15 @@ const ChatCliente = () => {
           <div
             key={index}
             style={{
-              textAlign: mensaje.from === 'Cliente' ? 'right' : 'left',
+              textAlign: mensaje.from === 'Admin' ? 'right' : 'left',
               marginBottom: '10px',
               display: 'flex',
-              justifyContent: mensaje.from === 'Cliente' ? 'flex-end' : 'flex-start',
+              justifyContent: mensaje.from === 'Admin' ? 'flex-end' : 'flex-start',
             }}
           >
             <p
               style={{
-                backgroundColor: mensaje.from === 'Cliente' ? '#c1f7c1' : '#f1f1f1',
+                backgroundColor: mensaje.from === 'Admin' ? '#c1f7c1' : '#f1f1f1',
                 display: 'inline-block',
                 padding: '8px 15px',
                 borderRadius: '10px',
@@ -95,4 +95,4 @@ const ChatCliente = () => {
   );
 };
 
-export default ChatCliente;
+export default ChatAdmin;

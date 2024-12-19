@@ -8,7 +8,8 @@ import Ordenes from "./pages/Ordenes";
 import Meseros from "./pages/Meseros";
 import Clientes from "./pages/Clientes";
 import Platillos from "./pages/Platillos";
-import Chat from "./pages/Chat";
+import ChatCliente from "./pages/Chat";
+import ChatAdmin from "./pages/SupportChat";
 import CategoriaPlatillos from "./pages/CategoriaPlatillos";
 
 import SidebarNavigation from "./components/sidebar_navegation";
@@ -47,8 +48,9 @@ function Layout() {
                     <Route path="/Meseros" element={<ProtectedRoute element={<Meseros />} />} />
                     <Route path="/Clientes" element={<ProtectedRoute element={<Clientes />} />} />
                     <Route path="/Platillos" element={<ProtectedRoute element={<Platillos />} />} />
-                    <Route path="/Chat" element={<ProtectedRoute element={<Chat />} />} />
+                    <Route path="/ChatCliente" element={<ProtectedRoute element={<ChatCliente />} />} />
                     <Route path="/Categorias" element={<ProtectedRoute element={<CategoriaPlatillos />} />} />
+                    <Route path="/ChatAdmin" element={<ProtectedRoute element={<ChatAdmin />} />}></Route>
                 </Routes>
             </div>
         </div>

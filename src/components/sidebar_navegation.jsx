@@ -62,7 +62,7 @@ function Sidebar_Navigation() {
             <Sidebar.Item href="/Categorias" icon={FaClipboardList}>
               Categorias Platillos
             </Sidebar.Item>
-            <Sidebar.Item href="/Chat" icon={CiChat1}>
+            <Sidebar.Item href="/ChatAdmin" icon={CiChat1}>
               Chat
             </Sidebar.Item>
           </Sidebar.ItemGroup>
